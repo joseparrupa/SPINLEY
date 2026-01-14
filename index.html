@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>SPINLEY</title>
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+    <body>
+        <header>
+            <p id="freeship">envío gratis a partir de compras superiores de 80€</p>
+
+            <img id="logotipo" src="contenidos/logoBlanco.png" alt="logo" height="150">
+                
+            <p class="buscador">
+                <input type="text" placeholder="Buscar...">
+                <button>🔍</button>
+            </p>
+
+            <button id="carrito" type="button">🛒</button>
+            <button id="favoritos" type="button">🤍</button>
+            <button id="contacto" type="button">CONTACTO</button>
+        </header>
+    
+        <video autoplay loop muted width="100%">
+            <source src="contenidos/videoInicio.mp4" type="video/mp4">
+        </video>
+        <div class="imagenesSexo"> 
+            <div class="item"> 
+                <img src="contenidos/FOTO SECCIÓN HOMBRE .jpg" alt="imagenHombre" >
+            </div>
+            <div class="item">
+                <img src="contenidos/FOTO SECCIÓN MUJER .jpg" alt="imagenMujer"> 
+            </div>
+        </div>
+        
+        <h2>maillots destacados</h2>
+        <div class="maillots">
+            <img src="contenidos/FOTO MAILLOT ROJO .png" alt="imagen maillot granate hombre">
+            <img src="contenidos/FOTO MODELO MAILLOT VERDE .png" alt="imagen maillot verde mujer">
+            <img src="contenidos/FOTO MODELO MAILLOT AZUL.png" alt="imagen maillot azul hombre">
+        </div>   
+        <h2>otros productos</h2>
+        <section class="productos">
+            <div class="carousel">
+                <div class="product" ><img src="contenidos/casco.jpg" alt="prdoucto 1"></div>
+                <div class="product" ><img src="contenidos/bidón.jpg" alt="prdoucto 2"></div>
+                <div class="product" ><img src="contenidos/guantes.jpg" alt="prdoucto 3"></div>
+                <div class="product" ><img src="contenidos/calcetines.jpg" alt="prdoucto 4"></div>
+                <div class="product" ><img src="contenidos/zapatillas.jpg" alt="prdoucto 5"></div>                
+                <div class="product" ><img src="contenidos/casco3.jpg" alt="prdoucto 6"></div>
+            </div>
+        </section>
+        
+        <script>
+            const carousel = document.querySelector('.carousel');
+            let items = Array.from(document.querySelectorAll('.product'));
+
+            const gap = 40;
+            const itemWidth = 150 + gap;
+
+            // CLONAR
+            const firstClone = items[0].cloneNode(true);
+            const lastClone = items[items.length - 1].cloneNode(true);
+
+            carousel.appendChild(firstClone);
+            carousel.insertBefore(lastClone, items[0]);
+
+            items = Array.from(document.querySelectorAll('.product'));
+
+            let index = 1;
+
+            function updateCarousel(animate = true) {
+                carousel.style.transition = animate ? 'transform 0.6s ease' : 'none';
+
+                const offset = -index * itemWidth + (window.innerWidth / 2 - itemWidth / 2);
+                carousel.style.transform = `translateX(${offset}px)`;
+
+                items.forEach(item => item.classList.remove('active'));
+                items[index].classList.add('active');
+            }
+
+            updateCarousel(false);
+
+            setInterval(() => {
+                index++;
+                updateCarousel();
+
+                if (index === items.length - 1) {
+                setTimeout(() => {
+                    index = 1;
+                    updateCarousel(false);
+                }, 600);
+                }
+            }, 2000);
+        </script>
+
+        <button id="addCesta">añadir a la cesta</button>
+
+        <h2>Colaboraciones</h2>
+        <section class="colaboraciones">
+        <div class="colabs">
+            <article class="post">
+                <img src="contenidos/FOTO APARTADO DE COLABORACIÓN(1).png">
+                <p class="user">@victorcasanovacycling_12</p>
+            </article>
+            <article class="post">
+                <img src="contenidos/FOTO APARTADO DE COLABORACIÓN.png">
+                <p class="user">@conozcamos.el mundo.ciclista</p>
+            </article>
+            <article class="post">
+                <img src="contenidos/FOTO APARTADO DE COLABORACIÓN .png">
+                <p class="user">@Stefy.gomez_</p>
+            </article>
+            <article class="post">
+                <img src="contenidos/FOTO APARTADO DE COLABORACIÓN  .png">
+                <p class="user">@club.montesinos_ciclismo</p>
+            </article>
+        </div>
+        </section>
+        <h2>eventos que creamos!!</h2>
+
+        <footer>
+            <img src="contenidos/LOGO SPINLEY SIN FONDO.png" alt="logotipo">
+            <div class="envio">
+            <pre>
+                        envío en 5 días 
+
+
+                 hasta 30 días para devoluviones
+                
+                 
+                contiene servicio de reparaciones
+            </pre>
+            </div>
+            <p class="definicion">UNA MARCA QUE SE PREOCUPA POR EL BIENESTAR SOCIAL Y CON EL OBJETIVO DE PODER INCENTIVAR A LOS USUARIOS A COMPRAR ARTÍCULOS DE CICLISMO ECOLÓGICO</p>
+        </footer>
+    </body>
+</html>
